@@ -1,24 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import AboutPage from './components/About';
+import Layout from './components/layout/Layout';
+
+function HomePageContent() {
+  return <h1>THE MAIN CONTENT HOME PAGE</h1>;
+}
+
+function AboutPageContent() {
+  return <h1>ABOUT PAGE CONTENT</h1>;
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AboutPage />
   );
 }
 
