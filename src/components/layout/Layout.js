@@ -6,11 +6,11 @@ function Layout(props) {
   const { children } = props;
 
   return (
-    <Box display="flex" flexDirection="column">
+    <Box display="flex" flexDirection="column" minHeight="100vh">
       <Box>
         <Header />
       </Box>
-      <Box minHeight="calc(100vh - 160px)">
+      <Box flexGrow={1}>
         <content>{children}</content>
       </Box>
       <Box>
