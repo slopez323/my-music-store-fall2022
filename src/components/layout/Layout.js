@@ -10,8 +10,8 @@ function Layout(props) {
       <Box>
         <Header />
       </Box>
-      <Box flexGrow={1}>
-        <content>{children}</content>
+      <Box flexGrow={1} py={6}>
+        {children}
       </Box>
       <Box>
         <Footer />
