@@ -1,9 +1,11 @@
 import { Button, TextField, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { sampleUserData } from "../../mockData";
 import Layout from "../layout/Layout";
 
 function LoginPage(props) {
   const { user, setUser } = props;
+  const navigate = useNavigate();
 
   return (
     <Layout user={user}>
@@ -25,7 +27,12 @@ function LoginPage(props) {
               label="Password"
               variant="outlined"
             />
-            <Button onClick={() => setUser({ ...sampleUserData })}>
+            <Button
+              onClick={() => {
+                setUser({ ...sampleUserData });
+                navigate("/");
+              }}
+            >
               Sign In
             </Button>
           </>

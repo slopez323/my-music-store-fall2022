@@ -22,6 +22,7 @@ export default function MenuAppBar(props) {
             fontWeight="bold"
             component="div"
             sx={{ flexGrow: 1 }}
+            onClick={() => navigate("/")}
           >
             MyMusicStore.com
           </Typography>

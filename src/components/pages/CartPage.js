@@ -8,17 +8,39 @@ function CartPage(props) {
   const { user, shoppingCart, setShoppingCart } = props;
   const navigate = useNavigate();
 
-  const total = shoppingCart.reduce((tot, item) => tot + Number(item.price), 0);
+  const total = shoppingCart.reduce(
+    (tot, item) => tot + Number(item.price) * item.qty,
+    0
+  );
+
+  const deleteItem = (itemToDelete) => {
+    const updatedCart = shoppingCart
+      .map((item) => {
+        if (item.id === itemToDelete.id) {
+          const newQty = item.qty - 1;
+          return { ...item, qty: newQty };
+        }
+        return item;
+      })
+      .filter((item) => item.qty !== 0);
+    setShoppingCart([...updatedCart]);
+  };
 
   return (
     <Layout user={user}>
-      <Box width={1} display="flex" flexDirection="column" alignItems="center">
+      <Box
+        width={1}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        gap={2}
+      >
         {shoppingCart.map((item) => (
-          <CartItem item={item} />
+          <CartItem item={item} deleteItem={deleteItem} key={item.id} />
         ))}
       </Box>
       <Box textAlign="center" p={4} fontWeight="bold">
-        Total: ${total.toFixed(2)}
+        Total: ${total.toLocaleString("en-US", { minimumFractionDigits: 2 })}
       </Box>
       <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
         <Button

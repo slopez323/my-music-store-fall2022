@@ -10,8 +10,9 @@ function HomePage(props) {
     <Layout user={user}>
       <Box display="flex" flexDirection="column" alignItems="center">
         {productList.map((product) => (
-          <Box mb={6} bgcolor="pink">
+          <Box mb={6} key={product.id}>
             <ProductDisplay
+              user={user}
               productData={product}
               shoppingCart={shoppingCart}
               setShoppingCart={setShoppingCart}

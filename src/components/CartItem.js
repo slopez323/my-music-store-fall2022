@@ -2,7 +2,7 @@ import { DeleteForever } from "@mui/icons-material";
 import { Typography, Box, IconButton, Avatar } from "@mui/material";
 
 function CartItem(props) {
-  const { item } = props;
+  const { item, deleteItem } = props;
   return (
     <Box
       display="flex"
@@ -16,10 +16,18 @@ function CartItem(props) {
       <Avatar alt={item.title} src={item.image} variant="square" />
       <Box flexGrow={1}>
         <Typography>{item.title}</Typography>
-        <Typography>{`$${item.price.toFixed(2)}`}</Typography>
+        <Typography>
+          {`$${item.price.toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+          })}`}
+        </Typography>
       </Box>
+      <Box>x{item.qty}</Box>
       <Box>
-        <IconButton aria-label="remove from cart">
+        <IconButton
+          aria-label="remove from cart"
+          onClick={() => deleteItem(item)}
+        >
           <DeleteForever />
         </IconButton>
       </Box>
