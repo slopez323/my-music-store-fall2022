@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -5,17 +6,17 @@ function Layout(props) {
   const { children } = props;
 
   return (
-    <div>
-      <div>
+    <Box display="flex" flexDirection="column">
+      <Box>
         <Header />
-      </div>
-      <div>
+      </Box>
+      <Box minHeight="calc(100vh - 160px)">
         <content>{children}</content>
-      </div>
-      <div>
+      </Box>
+      <Box>
         <Footer />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 
