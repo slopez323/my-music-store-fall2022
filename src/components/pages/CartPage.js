@@ -1,11 +1,12 @@
 import { CreditCard, Delete, Home } from "@mui/icons-material";
 import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../contexts/cartContext";
 import CartItem from "../CartItem";
 import Layout from "../layout/Layout";
 
-function CartPage(props) {
-  const { user, shoppingCart, setShoppingCart } = props;
+function CartPage() {
+  const { shoppingCart, setShoppingCart } = useCart();
   const navigate = useNavigate();
 
   const total = shoppingCart.reduce(
@@ -27,7 +28,7 @@ function CartPage(props) {
   };
 
   return (
-    <Layout user={user}>
+    <Layout>
       <Box
         width={1}
         display="flex"

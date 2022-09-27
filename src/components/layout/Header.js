@@ -8,9 +8,10 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Avatar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../contexts/userContext";
 
-export default function MenuAppBar(props) {
-  const { user } = props;
+export default function MenuAppBar() {
+  const { user } = useUser();
   const navigate = useNavigate();
 
   return (

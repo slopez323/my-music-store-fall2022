@@ -9,9 +9,13 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../contexts/userContext";
+import { useCart } from "../contexts/cartContext";
 
 function ProductDisplay(props) {
-  const { user, productData, shoppingCart, setShoppingCart } = props;
+  const { productData } = props;
+  const { shoppingCart, setShoppingCart } = useCart();
+  const { user } = useUser();
   const navigate = useNavigate();
 
   const addToCart = (productToAdd) => {
