@@ -5,7 +5,7 @@ import { sampleUserData } from "../../mockData";
 import Layout from "../layout/Layout";
 
 function LoginPage() {
-  const { user, setUser } = useUser();
+  const { user, signIn, signOut } = useUser();
   const navigate = useNavigate();
 
   return (
@@ -19,7 +19,7 @@ function LoginPage() {
         gap={1}
       >
         {user ? (
-          <Button onClick={() => setUser()}>Log out</Button>
+          <Button onClick={signOut}>Log out</Button>
         ) : (
           <>
             <TextField id="outlined-basic" label="Email" variant="outlined" />
@@ -30,7 +30,7 @@ function LoginPage() {
             />
             <Button
               onClick={() => {
-                setUser({ ...sampleUserData });
+                signIn(sampleUserData);
                 navigate("/");
               }}
             >

@@ -6,26 +6,13 @@ import CartItem from "../CartItem";
 import Layout from "../layout/Layout";
 
 function CartPage() {
-  const { shoppingCart, setShoppingCart } = useCart();
+  const { shoppingCart, emptyCart } = useCart();
   const navigate = useNavigate();
 
   const total = shoppingCart.reduce(
     (tot, item) => tot + Number(item.price) * item.qty,
     0
   );
-
-  const deleteItem = (itemToDelete) => {
-    const updatedCart = shoppingCart
-      .map((item) => {
-        if (item.id === itemToDelete.id) {
-          const newQty = item.qty - 1;
-          return { ...item, qty: newQty };
-        }
-        return item;
-      })
-      .filter((item) => item.qty !== 0);
-    setShoppingCart([...updatedCart]);
-  };
 
   return (
     <Layout>
@@ -37,7 +24,7 @@ function CartPage() {
         gap={2}
       >
         {shoppingCart.map((item) => (
-          <CartItem item={item} deleteItem={deleteItem} key={item.id} />
+          <CartItem item={item} key={item.id} />
         ))}
       </Box>
       <Box textAlign="center" p={4} fontWeight="bold">
@@ -55,7 +42,7 @@ function CartPage() {
           variant="contained"
           startIcon={<Delete />}
           sx={{ width: "200px" }}
-          onClick={() => setShoppingCart([])}
+          onClick={emptyCart}
         >
           <Box>Empty Cart</Box>
         </Button>

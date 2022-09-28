@@ -8,32 +8,11 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Box, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { useUser } from "../contexts/userContext";
 import { useCart } from "../contexts/cartContext";
 
 function ProductDisplay(props) {
   const { productData } = props;
-  const { shoppingCart, setShoppingCart } = useCart();
-  const { user } = useUser();
-  const navigate = useNavigate();
-
-  const addToCart = (productToAdd) => {
-    if (user) {
-      if (shoppingCart.some((product) => product.id === productToAdd.id)) {
-        const updatedCart = shoppingCart.map((item) => {
-          if (item.id === productToAdd.id) {
-            const newQty = item.qty + 1;
-            return { ...item, qty: newQty };
-          }
-          return item;
-        });
-        setShoppingCart(updatedCart);
-      } else {
-        setShoppingCart([...shoppingCart, { ...productToAdd, qty: 1 }]);
-      }
-    } else navigate("/sign-in");
-  };
+  const { addToCart } = useCart();
 
   return (
     <Card sx={{ maxWidth: 345 }}>

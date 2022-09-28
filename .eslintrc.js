@@ -22,5 +22,6 @@ module.exports = {
     "object-curly-newline": "off",
     "react/jsx-wrap-multilines": "off",
     "react/jsx-one-expression-per-line": "off",
+    "implicit-arrow-linebreak": "off",
   },
 };

@@ -1,8 +1,11 @@
 import { DeleteForever } from "@mui/icons-material";
 import { Typography, Box, IconButton, Avatar } from "@mui/material";
+import { useCart } from "../contexts/cartContext";
 
 function CartItem(props) {
-  const { item, deleteItem } = props;
+  const { item } = props;
+  const { removeFromCart } = useCart();
+
   return (
     <Box
       display="flex"
@@ -26,7 +29,7 @@ function CartItem(props) {
       <Box>
         <IconButton
           aria-label="remove from cart"
-          onClick={() => deleteItem(item)}
+          onClick={() => removeFromCart(item)}
         >
           <DeleteForever />
         </IconButton>
