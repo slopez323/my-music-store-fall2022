@@ -2,7 +2,7 @@ import { Button, TextField, Box } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { sampleUserData } from "../../mockData";
-import { signIn, signOut } from "../../redux-state/store";
+import { signIn, signOut } from "../../redux-state/userSlice";
 import Layout from "../layout/Layout";
 
 function LoginPage() {

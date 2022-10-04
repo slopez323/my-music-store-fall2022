@@ -1,19 +1,11 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-export const userSlice = createSlice({
-  name: "user",
-  initialState: null,
-  reducers: {
-    signIn: (state, action) => action.payload,
-    signOut: () => null,
-  },
-});
-
-export const { signIn, signOut } = userSlice.actions;
+import { configureStore } from "@reduxjs/toolkit";
+import { cartSlice } from "./cartSlice";
+import { userSlice } from "./userSlice";
 
 const store = configureStore({
   reducer: {
     user: userSlice.reducer,
+    cart: cartSlice.reducer,
   },
 });
 

@@ -8,11 +8,12 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Box, Button } from "@mui/material";
-import { useCart } from "../contexts/cartContext";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux-state/cartSlice";
 
 function ProductDisplay(props) {
   const { productData } = props;
-  const { addToCart } = useCart();
+  const dispatch = useDispatch();
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -32,7 +33,9 @@ function ProductDisplay(props) {
       </CardContent>
       <CardActions disableSpacing>
         <Box display="flex" justifyContent="space-between" width={1}>
-          <Button onClick={() => addToCart(productData)}>Add to cart</Button>
+          <Button onClick={() => dispatch(addToCart(productData))}>
+            Add to cart
+          </Button>
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>

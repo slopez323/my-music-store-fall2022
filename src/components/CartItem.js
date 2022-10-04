@@ -1,10 +1,11 @@
 import { DeleteForever } from "@mui/icons-material";
 import { Typography, Box, IconButton, Avatar } from "@mui/material";
-import { useCart } from "../contexts/cartContext";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../redux-state/cartSlice";
 
 function CartItem(props) {
   const { item } = props;
-  const { removeFromCart } = useCart();
+  const dispatch = useDispatch();
 
   return (
     <Box
@@ -29,7 +30,7 @@ function CartItem(props) {
       <Box>
         <IconButton
           aria-label="remove from cart"
-          onClick={() => removeFromCart(item)}
+          onClick={() => dispatch(removeFromCart(item))}
         >
           <DeleteForever />
         </IconButton>
