@@ -1,0 +1,20 @@
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+
+export const userSlice = createSlice({
+  name: "user",
+  initialState: null,
+  reducers: {
+    signIn: (state, action) => action.payload,
+    signOut: () => null,
+  },
+});
+
+export const { signIn, signOut } = userSlice.actions;
+
+const store = configureStore({
+  reducer: {
+    user: userSlice.reducer,
+  },
+});
+
+export default store;

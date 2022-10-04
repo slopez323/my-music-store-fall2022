@@ -1,16 +1,17 @@
+import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import CartPage from "./components/pages/CartPage";
 import HomePage from "./components/pages/HomePage";
 import LoginPage from "./components/pages/LoginPage";
 import { CartContextProvider } from "./contexts/cartContext";
-import { UserContextProvider } from "./contexts/userContext";
 import CustomThemeProvider from "./CustomThemeProvider";
+import store from "./redux-state/store";
 
 function App() {
   return (
     <CustomThemeProvider>
-      <UserContextProvider>
+      <Provider store={store}>
         <CartContextProvider>
           <BrowserRouter>
             <Routes>
@@ -20,7 +21,7 @@ function App() {
             </Routes>
           </BrowserRouter>
         </CartContextProvider>
-      </UserContextProvider>
+      </Provider>
     </CustomThemeProvider>
   );
 }

@@ -1,11 +1,13 @@
 import { Button, TextField, Box } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../contexts/userContext";
 import { sampleUserData } from "../../mockData";
+import { signIn, signOut } from "../../redux-state/store";
 import Layout from "../layout/Layout";
 
 function LoginPage() {
-  const { user, signIn, signOut } = useUser();
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   return (
@@ -19,7 +21,7 @@ function LoginPage() {
         gap={1}
       >
         {user ? (
-          <Button onClick={signOut}>Log out</Button>
+          <Button onClick={() => dispatch(signOut())}>Log out</Button>
         ) : (
           <>
             <TextField id="outlined-basic" label="Email" variant="outlined" />
@@ -30,7 +32,7 @@ function LoginPage() {
             />
             <Button
               onClick={() => {
-                signIn(sampleUserData);
+                dispatch(signIn(sampleUserData));
                 navigate("/");
               }}
             >
